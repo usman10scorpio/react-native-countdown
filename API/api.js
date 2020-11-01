@@ -4,7 +4,7 @@ import uuid from 'uuid';
 
 export const baseUrl =
   Platform.OS === 'android'
-    ? 'http://192.168.1.8:3000/events'
+    ? 'http://192.168.1.8:3000/events' //
     : 'http://192.168.1.8:3000/events';
 
 export function getEvents() {
