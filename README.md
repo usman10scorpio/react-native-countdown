@@ -11,3 +11,11 @@ A practice app made by following this tutorial [React Native: Getting Started ](
     which is you wont be able to call the https://localhost:3000/events api from your phone. I found the fix at [stackoverflow](https://stackoverflow.com/questions/63132453/unable-to-reach-json-server-from-fetch-in-react-native-app/63133395#comment114204542_63133395)
     Make sure your phone and android device are using the same internet. 
 
+
+![](./images/first_screen.jpeg) 
+
+![](./images/second_screen.jpeg) 
+
+![](./images/third_screen.jpeg)
+
+
