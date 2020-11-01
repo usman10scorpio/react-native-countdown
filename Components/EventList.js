@@ -1,28 +1,35 @@
 import React, {Component} from 'react';
-import {Text, FlatList} from 'react-native';
+import {FlatList} from 'react-native';
 import EventCard from './EventCard';
 import ActionButton from 'react-native-action-button';
+import {getEvents} from '../API/api';
 
 class EventList extends Component {
   state = {
     events: [],
   };
 
-  componentDidMount() {
-    setInterval(() => {
-      this.setState({
-        events: this.state.events.map((evt) => ({
-          ...evt,
-          timer: Date.now(),
-        })),
-      });
-    }, 1000);
+  tick() {
+    this.setState({
+      events: this.state.events.map((evt) => ({
+        ...evt,
+        timer: Date.now(),
+      })),
+    });
+  }
 
-    const events = require('../db.json').events.map((e) => ({
-      ...e,
-      date: new Date(e.date),
-    }));
-    this.setState({events});
+  componentDidMount() {
+    setInterval(() => this.tick(), 1000);
+
+    this.props.navigation.addListener('focus', () => {
+      getEvents().then((events) => {
+        this.setState({events});
+      });
+    });
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.intervalID);
   }
 
   handleEvent = () => {
